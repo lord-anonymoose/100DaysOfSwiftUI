@@ -26,6 +26,17 @@ struct ContentView: View {
         return orderAmount * ((tipSelected / 100) + 1)
     }
     
+    var isZeroTip: Bool {
+        var zeroTip = false
+        let tipSelected = Double(tipPercentages[tipPercentage])
+        if tipSelected == 0 {
+            zeroTip = true
+        } else {
+            zeroTip = false
+        }
+        return zeroTip
+    }
+    
     var body: some View {
         NavigationView {
             Form {
@@ -54,6 +65,7 @@ struct ContentView: View {
                 }
             }
             .navigationBarTitle(Text("WeSplit"))
+            .foregroundColor(isZeroTip ? .red : .blue)
         }
     }
 }

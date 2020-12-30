@@ -7,6 +7,19 @@
 
 import SwiftUI
 
+struct Blue: ViewModifier {
+    func body(content: Content) -> some View {
+        content
+            .foregroundColor(.blue)
+    }
+}
+
+extension View {
+    func blueFont() -> some View {
+        self.modifier(Blue())
+    }
+}
+
 struct ContentView: View {
     let scales = ["Celsius", "Fahrenheit", "Kelvin"]
     @State private var inputScale = 0
@@ -67,7 +80,7 @@ struct ContentView: View {
             
             
             
-                .navigationTitle("Temperature converter")
+            .navigationTitle("Temperature converter")
         }
     }
 }
