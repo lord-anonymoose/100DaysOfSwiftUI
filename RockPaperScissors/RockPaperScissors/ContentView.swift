@@ -23,11 +23,12 @@ struct appMove: View {
 
 struct buttonView: View {
     var choice: String
+    var color: Color
     var body: some View {
         ZStack {
             RoundedRectangle(cornerRadius: 12)
                 .frame(width: 70, height: 70, alignment: .center)
-                .foregroundColor(.orange)
+                .foregroundColor(color)
                 .shadow(color:.black, radius: 3)
             Text(choice)
                 .font(.system(size: 35))
@@ -53,6 +54,7 @@ func findResult (playerChoice: String, appChoice: String) -> String {
 
 struct ContentView: View {
     @State private var choices = ["❓", "🪨", "📃", "✂️"]
+    @State private var buttonColors = [Color.orange, Color.orange, Color.orange]
     @State private var playerChoice = 0
     @State private var computerChoice = 0
     @State private var score = 0
@@ -64,6 +66,7 @@ struct ContentView: View {
                 .edgesIgnoringSafeArea(.all)
             VStack {
                 Text(result)
+                    .padding(.bottom, 50)
                 Text("Apps move:")
                     .foregroundColor(.white)
                 appMove(choice: choices[computerChoice])
@@ -73,15 +76,21 @@ struct ContentView: View {
                         Button (action: {
                             playerChoice = i
                             computerChoice = Int.random(in: 1...3)
-                            //result = findResult(myChoice, computerChoice)
+                            for i in 0...2 {
+                                buttonColors[i] = .orange
+                            }
                             result = findResult(playerChoice: choices[playerChoice], appChoice: choices[computerChoice])
+                            if result == "You lost!" {
+                                buttonColors[i-1] = .red
+                            } else if result == "You won!" {
+                                buttonColors[i-1] = .green
+                            } else {
+                                buttonColors[i-1] = .white
+                            }
                         }) {
-                            buttonView(choice: choices[i])
+                            buttonView(choice: choices[i], color: buttonColors[i-1])
                         }
                     }
-                    //buttonView(choice: "🪨")
-                    //buttonView(choice: "📃")
-                    //buttonView(choice: "✂️")
                 }
             }
         }
