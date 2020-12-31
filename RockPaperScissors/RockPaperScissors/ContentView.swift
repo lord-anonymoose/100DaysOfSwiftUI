@@ -11,13 +11,14 @@ struct appMove: View {
     var choice: String
     var body: some View {
         ZStack {
-            RoundedRectangle(cornerRadius: 25)
-                .frame(width: 120, height: 120, alignment: .center)
+            Circle()
+                .frame(width: 170, height: 170, alignment: .center)
                 .foregroundColor(.yellow)
-                .shadow(color: .black, radius: 5)
+                .shadow(color: .black, radius: 10)
             Text(choice)
                 .font(.system(size: 70))
         }
+        .padding(.bottom, 60)
     }
 }
 
@@ -66,6 +67,8 @@ struct ContentView: View {
                 .edgesIgnoringSafeArea(.all)
             VStack {
                 Text(result)
+                    //.rotation3DEffect(.degrees(60), axis: (x: 1, y: 0, z: 0))
+                    .font(.largeTitle)
                     .padding(.bottom, 50)
                 Text("Apps move:")
                     .foregroundColor(.white)
