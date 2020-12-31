@@ -35,14 +35,18 @@ struct buttonView: View {
     }
 }
 
-func didWin (playerChoice: String, appChoice: String) -> Bool {
-    var returnValue = false
+func findResult (playerChoice: String, appChoice: String) -> String {
+    var returnValue = ""
     if (playerChoice == "🪨") && (appChoice == "✂️") {
-        returnValue = true
+        returnValue = "You won!"
     } else if (playerChoice == "📃") && (appChoice == "🪨") {
-        returnValue = true
+        returnValue = "You won!"
     } else if (playerChoice == "✂️") && (appChoice == "📃") {
-        returnValue = true
+        returnValue = "You won!"
+    } else if (playerChoice == appChoice) {
+        returnValue = "It's a tie!"
+    } else {
+        returnValue = "You lost!"
     }
     return returnValue
 }
@@ -52,20 +56,32 @@ struct ContentView: View {
     @State private var playerChoice = 0
     @State private var computerChoice = 0
     @State private var score = 0
+    @State private var result = "Let's start the game!"
     
     var body: some View {
         ZStack {
             LinearGradient(gradient: Gradient(colors: [Color.green, Color.yellow, Color.orange]), startPoint: .topLeading, endPoint: .bottomTrailing)
                 .edgesIgnoringSafeArea(.all)
             VStack {
+                Text(result)
                 Text("Apps move:")
                     .foregroundColor(.white)
-                appMove(choice: "📱")
+                appMove(choice: choices[computerChoice])
                 Text("My move:")
                 HStack {
-                    buttonView(choice: "🪨")
-                    buttonView(choice: "📃")
-                    buttonView(choice: "✂️")
+                    ForEach(1..<4) {i in
+                        Button (action: {
+                            playerChoice = i
+                            computerChoice = Int.random(in: 1...3)
+                            //result = findResult(myChoice, computerChoice)
+                            result = findResult(playerChoice: choices[playerChoice], appChoice: choices[computerChoice])
+                        }) {
+                            buttonView(choice: choices[i])
+                        }
+                    }
+                    //buttonView(choice: "🪨")
+                    //buttonView(choice: "📃")
+                    //buttonView(choice: "✂️")
                 }
             }
         }
