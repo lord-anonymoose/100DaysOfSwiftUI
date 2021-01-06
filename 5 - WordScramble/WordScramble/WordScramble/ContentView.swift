@@ -16,6 +16,8 @@ struct ContentView: View {
     @State private var errorMessage = ""
     @State private var showError = false
     
+    @State private var score = 0
+    
     func addNewWord() {
         let answer = newWord.lowercased().trimmingCharacters(in: .whitespacesAndNewlines)
         
@@ -38,8 +40,23 @@ struct ContentView: View {
             return
         }
         
+        guard isShort(word: answer) else {
+            wordError(title: "Too short!", message: "The word has less than 3 letters")
+            return
+        }
+        
         usedWords.insert(answer, at: 0)
+        score += answer.count
         newWord = ""
+    }
+    
+    func isShort(word: String) -> Bool {
+        let checkWord = word
+        if checkWord.count < 3 {
+            return false
+        } else {
+            return true
+        }
     }
     
     func isOriginal(word: String) -> Bool {
@@ -77,6 +94,8 @@ struct ContentView: View {
                 String(contentsOf: startWordsURL) {
                 let allWords = startWords.components(separatedBy: "\n")
                 rootWord = allWords.randomElement() ?? "silkworm"
+                score = 0
+                usedWords = []
                 return
             }
         }
@@ -96,6 +115,14 @@ struct ContentView: View {
                 }
             }
             .navigationBarTitle(rootWord)
+            .navigationBarItems(leading:
+                                    HStack {
+                                        Button(action: startGame, label: {
+                                            Text("Restart")})
+                                        Text("Score: \(score)")
+                                    }
+                                
+            )
             .onAppear(perform: startGame)
             .alert(isPresented: $showError, content: {
                 Alert(title: Text(errorTitle), message: Text(errorMessage), dismissButton: .default(Text("OK")))
