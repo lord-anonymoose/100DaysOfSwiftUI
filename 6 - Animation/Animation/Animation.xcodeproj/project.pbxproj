@@ -11,6 +11,7 @@
 		1768392525A72B8700840F98 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1768392425A72B8700840F98 /* ContentView.swift */; };
 		1768392725A72B8800840F98 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1768392625A72B8800840F98 /* Assets.xcassets */; };
 		1768392A25A72B8800840F98 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1768392925A72B8800840F98 /* Preview Assets.xcassets */; };
+		179E553925A735C1006FAD14 /* customAnimations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 179E553825A735C1006FAD14 /* customAnimations.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,6 +21,7 @@
 		1768392625A72B8800840F98 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1768392925A72B8800840F98 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		1768392B25A72B8800840F98 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		179E553825A735C1006FAD14 /* customAnimations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = customAnimations.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +56,7 @@
 			children = (
 				1768392225A72B8700840F98 /* AnimationApp.swift */,
 				1768392425A72B8700840F98 /* ContentView.swift */,
+				179E553825A735C1006FAD14 /* customAnimations.swift */,
 				1768392625A72B8800840F98 /* Assets.xcassets */,
 				1768392B25A72B8800840F98 /* Info.plist */,
 				1768392825A72B8800840F98 /* Preview Content */,
@@ -139,6 +142,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1768392525A72B8700840F98 /* ContentView.swift in Sources */,
+				179E553925A735C1006FAD14 /* customAnimations.swift in Sources */,
 				1768392325A72B8700840F98 /* AnimationApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
