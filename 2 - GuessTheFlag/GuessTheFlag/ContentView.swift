@@ -7,18 +7,6 @@
 
 import SwiftUI
 
-struct flagView: View {
-    var image = ""
-    var body: some View {
-        Image(image)
-            .renderingMode(.original)
-            .clipShape(Capsule())
-            .overlay(Capsule().stroke(Color.black, lineWidth: 1))
-            .shadow(color: .black
-                    , radius: 2)
-    }
-}
-
 struct ContentView: View {
     @State private var countries = ["Estonia", "France", "Germany", "Ireland", "Italy", "Nigeria", "Poland", "Russia", "Spain", "UK", "US"].shuffled()
     @State private var correctAnswer = Int.random(in: 0...2)
@@ -27,6 +15,9 @@ struct ContentView: View {
     @State private var score = 0
     @State private var currentFlag = 0
     
+    @State private var animationAmount = 0.0
+    @State private var opacity: Double = 1.0
+
     
     var body: some View {
         ZStack {
@@ -44,17 +35,18 @@ struct ContentView: View {
                 
                 ForEach(0 ..< 3) { number in
                     Button(action: {
+                        withAnimation {
+                            self.animationAmount += 360
+                            self.opacity -= 0.8
+                        }
                         self.flagTapped(number)
-                    }) {
+                        
+                    }
+                    ) {
+                        
                         flagView(image: self.countries[number])
-                        /*
-                        Image(self.countries[number])
-                            .renderingMode(.original)
-                            .clipShape(Capsule())
-                            .overlay(Capsule().stroke(Color.black, lineWidth: 1))
-                            .shadow(color: .black
-                                    , radius: 2)
- */
+                            .rotation3DEffect(.degrees(number == correctAnswer ? animationAmount: 0), axis: (x: 0, y: 1, z: 0))
+                            .opacity(number != correctAnswer ? opacity: 1.0)
                     }
                 }
                 Text("Your score: \(score)")
@@ -73,7 +65,9 @@ struct ContentView: View {
         if number == correctAnswer {
             scoreTitle = "Correct"
             score += 1
-            askQuestion()
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                askQuestion()
+            }
         } else {
             scoreTitle = "Wrong"
             currentFlag = number
@@ -84,6 +78,9 @@ struct ContentView: View {
     func askQuestion() {
         countries.shuffle()
         correctAnswer = Int.random(in: 0...2)
+        withAnimation {
+            opacity = 1
+        }
     }
 }
 
