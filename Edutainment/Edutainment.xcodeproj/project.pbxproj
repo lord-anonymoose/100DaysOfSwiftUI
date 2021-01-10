@@ -11,6 +11,8 @@
 		17D13D6A25AB6B57004D0C89 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17D13D6925AB6B57004D0C89 /* ContentView.swift */; };
 		17D13D6C25AB6B5B004D0C89 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 17D13D6B25AB6B5B004D0C89 /* Assets.xcassets */; };
 		17D13D6F25AB6B5B004D0C89 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 17D13D6E25AB6B5B004D0C89 /* Preview Assets.xcassets */; };
+		17D13D7825AB6F2C004D0C89 /* settingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17D13D7725AB6F2C004D0C89 /* settingsView.swift */; };
+		17D13D7B25AB77DE004D0C89 /* gameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17D13D7A25AB77DE004D0C89 /* gameView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,6 +22,8 @@
 		17D13D6B25AB6B5B004D0C89 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		17D13D6E25AB6B5B004D0C89 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		17D13D7025AB6B5B004D0C89 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		17D13D7725AB6F2C004D0C89 /* settingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = settingsView.swift; sourceTree = "<group>"; };
+		17D13D7A25AB77DE004D0C89 /* gameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = gameView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +58,8 @@
 			children = (
 				17D13D6725AB6B57004D0C89 /* EdutainmentApp.swift */,
 				17D13D6925AB6B57004D0C89 /* ContentView.swift */,
+				17D13D7A25AB77DE004D0C89 /* gameView.swift */,
+				17D13D7725AB6F2C004D0C89 /* settingsView.swift */,
 				17D13D6B25AB6B5B004D0C89 /* Assets.xcassets */,
 				17D13D7025AB6B5B004D0C89 /* Info.plist */,
 				17D13D6D25AB6B5B004D0C89 /* Preview Content */,
@@ -138,7 +144,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				17D13D7825AB6F2C004D0C89 /* settingsView.swift in Sources */,
 				17D13D6A25AB6B57004D0C89 /* ContentView.swift in Sources */,
+				17D13D7B25AB77DE004D0C89 /* gameView.swift in Sources */,
 				17D13D6825AB6B57004D0C89 /* EdutainmentApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
