@@ -37,7 +37,7 @@ struct ContentView: View {
                     Button(action: {
                         withAnimation {
                             self.animationAmount += 360
-                            self.opacity -= 0.8
+                            self.opacity -= 0.75
                         }
                         self.flagTapped(number)
                         
@@ -55,7 +55,7 @@ struct ContentView: View {
         }
         .alert(isPresented: $showingAlert) {
             Alert(title: Text(scoreTitle), message: Text("This is a flag of \(countries[currentFlag])"), dismissButton: .default(Text("Continue")) {
-                self.askQuestion()
+              self.askQuestion()
             }
             )
         }
