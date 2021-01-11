@@ -47,6 +47,7 @@ struct settingsView: View {
             
             Button("Start") {
                 data.gameStarted.toggle()
+                print(data.gameStarted)
             }
         }
     }

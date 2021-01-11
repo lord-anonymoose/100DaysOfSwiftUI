@@ -8,8 +8,8 @@
 import Foundation
 
 class gameData: ObservableObject {
-    @Published var gameStarted = false
     @Published var practicedTable = 1
+    @Published var gameStarted = false
     @Published var questionOptions = [5, 10, 20, 0]
     @Published var questions = 5
 }
