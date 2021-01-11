@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		17478E2825ACD336007A7700 /* gameData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17478E2725ACD336007A7700 /* gameData.swift */; };
 		17D13D6825AB6B57004D0C89 /* EdutainmentApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17D13D6725AB6B57004D0C89 /* EdutainmentApp.swift */; };
 		17D13D6A25AB6B57004D0C89 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17D13D6925AB6B57004D0C89 /* ContentView.swift */; };
 		17D13D6C25AB6B5B004D0C89 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 17D13D6B25AB6B5B004D0C89 /* Assets.xcassets */; };
@@ -16,6 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		17478E2725ACD336007A7700 /* gameData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = gameData.swift; sourceTree = "<group>"; };
 		17D13D6425AB6B57004D0C89 /* Edutainment.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Edutainment.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		17D13D6725AB6B57004D0C89 /* EdutainmentApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EdutainmentApp.swift; sourceTree = "<group>"; };
 		17D13D6925AB6B57004D0C89 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -60,6 +62,7 @@
 				17D13D6925AB6B57004D0C89 /* ContentView.swift */,
 				17D13D7A25AB77DE004D0C89 /* gameView.swift */,
 				17D13D7725AB6F2C004D0C89 /* settingsView.swift */,
+				17478E2725ACD336007A7700 /* gameData.swift */,
 				17D13D6B25AB6B5B004D0C89 /* Assets.xcassets */,
 				17D13D7025AB6B5B004D0C89 /* Info.plist */,
 				17D13D6D25AB6B5B004D0C89 /* Preview Content */,
@@ -145,6 +148,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				17D13D7825AB6F2C004D0C89 /* settingsView.swift in Sources */,
+				17478E2825ACD336007A7700 /* gameData.swift in Sources */,
 				17D13D6A25AB6B57004D0C89 /* ContentView.swift in Sources */,
 				17D13D7B25AB77DE004D0C89 /* gameView.swift in Sources */,
 				17D13D6825AB6B57004D0C89 /* EdutainmentApp.swift in Sources */,

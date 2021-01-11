@@ -5,14 +5,12 @@
 //  Created by Philipp on 10.01.2021.
 //
 
-/*
+
 import SwiftUI
 
 struct settingsView: View {
-    @State var practicedTable: Int
-    let questionOptions: [Int]
-    @State var questions: Int
-    @State var gameStarted: Bool
+    
+    @ObservedObject private var data = gameData()
     
     var body: some View {
         VStack {
@@ -20,8 +18,8 @@ struct settingsView: View {
             VStack {
                 Text("What tables to practise?")
                     .font(.headline)
-                Stepper(value: $practicedTable, in: 1...12, step: 1) {
-                    Text("Up to \(practicedTable)")
+                Stepper(value: $data.practicedTable, in: 1...12, step: 1) {
+                    Text("Up to \(data.practicedTable)")
                 }
                 .padding(.trailing, 60)
                 .padding(.leading, 60)
@@ -32,12 +30,12 @@ struct settingsView: View {
                 Text("How many questions?")
                     .font(.headline)
                 
-                Picker("Questions: ", selection: $questions) {
-                    ForEach (0..<questionOptions.count) {
-                        if self.questionOptions[$0] == 0 {
+                Picker("Questions: ", selection: $data.questions) {
+                    ForEach (0..<data.questionOptions.count) {
+                        if data.questionOptions[$0] == 0 {
                             Text("All")
                         } else {
-                            Text("\(self.questionOptions[$0])")
+                            Text("\(data.questionOptions[$0])")
                         }
                     }
                 }
@@ -48,9 +46,9 @@ struct settingsView: View {
             .padding(.bottom, 50)
             
             Button("Start") {
-                self.gameStarted.toggle()
+                data.gameStarted.toggle()
             }
         }
     }
 }
-*/
+

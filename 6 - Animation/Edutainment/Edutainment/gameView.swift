@@ -8,11 +8,10 @@
 import SwiftUI
 
 struct gameView: View {
-    var questions: Int
-    var practicedTable: Int
-    @State private var turns = 0
+    @ObservedObject var data = gameData()
+    
     var body: some View {
-        Text("\(questions) and \(practicedTable)")
+        Text("\(data.questions) and \(data.practicedTable)")
     }
 }
 
