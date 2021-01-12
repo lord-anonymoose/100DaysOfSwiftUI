@@ -10,7 +10,7 @@ import SwiftUI
 
 struct settingsView: View {
     
-    @ObservedObject private var data = gameData()
+    @ObservedObject var data = gameData()
     
     var body: some View {
         VStack {

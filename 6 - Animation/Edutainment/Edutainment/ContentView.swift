@@ -8,12 +8,16 @@
 import SwiftUI
 
 struct ContentView: View {
-    @ObservedObject private var data = gameData()
+    //@ObservedObject var data = gameData()
+    //@EnvironmentObject var data: gameDate
+    @ObservedObject var data = gameData()
     var body: some View {
-        settingsView()
-            .sheet(isPresented: $data.gameStarted) {
-            }
-    }
+        if (!data.gameStarted) {
+            settingsView()
+        } else {
+            gameView()
+        }
+}
 }
 
 struct ContentView_Previews: PreviewProvider {

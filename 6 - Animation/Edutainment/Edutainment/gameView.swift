@@ -8,8 +8,9 @@
 import SwiftUI
 
 struct gameView: View {
-    @ObservedObject private var data = gameData()
-    
+    //@ObservedObject private var data = gameData()
+    @ObservedObject var data = gameData()
+
     var body: some View {
         Text("\(data.questions) and \(data.practicedTable)")
     }
