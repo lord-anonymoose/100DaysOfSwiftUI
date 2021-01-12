@@ -8,8 +8,6 @@
 import SwiftUI
 
 struct ContentView: View {
-    //@ObservedObject var data = gameData()
-    //@EnvironmentObject var data: gameDate
     @ObservedObject var data = gameData()
     var body: some View {
         if (!data.gameStarted) {

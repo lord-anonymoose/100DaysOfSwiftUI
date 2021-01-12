@@ -2,13 +2,12 @@
 //  gameView.swift
 //  Edutainment
 //
-//  Created by Philipp on 10.01.2021.
+//  Created by Philipp on 12.01.2021.
 //
 
 import SwiftUI
 
 struct gameView: View {
-    //@ObservedObject private var data = gameData()
     @ObservedObject var data = gameData()
 
     var body: some View {
@@ -16,3 +15,8 @@ struct gameView: View {
     }
 }
 
+struct gameView_Previews: PreviewProvider {
+    static var previews: some View {
+        gameView()
+    }
+}
