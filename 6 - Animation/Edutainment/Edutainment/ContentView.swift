@@ -2,20 +2,47 @@
 //  ContentView.swift
 //  Edutainment
 //
-//  Created by Philipp on 10.01.2021.
+//  Created by Philipp on 12.01.2021.
 //
 
 import SwiftUI
 
-struct ContentView: View {
-    @ObservedObject var data = gameData()
-    var body: some View {
-        if (!data.gameStarted) {
-            settingsView()
-        } else {
-            gameView()
-        }
+struct gameData {
+    var tables: Int
+    var questions: Int
+    
 }
+
+struct ContentView: View {
+    @State private var gameStarted = false
+    @State private var tables = 1
+    @State private var questions = 5
+    let questionOptions = ["5", "10", "20", "All"]
+    
+    
+    var body: some View {
+        VStack {
+            Text("What tables you want to practice: ")
+                .font(.headline)
+            Stepper(value: $tables, in: 1...12, step: 1) {
+                Text("Tables up to \(tables)")
+            }
+            .padding(.bottom, 20)
+            
+            Text("How many questions?")
+                .font(.headline)
+            Picker("Questions",selection: $questions) {
+                ForEach (0..<questionOptions.count) {
+                        Text("\(questionOptions[$0])")
+                }
+            }
+            .pickerStyle(SegmentedPickerStyle())
+            .padding(.bottom, 20)
+            
+            Text("Tables: \(tables)")
+            Text("Questions: \(questions)")
+        }
+    }
 }
 
 struct ContentView_Previews: PreviewProvider {
