@@ -46,29 +46,49 @@ struct ContentView: View {
     @ObservedObject var expenses = Expenses()
     @State private var showingAddExpense = false
     
+    struct itemView: View {
+        var name: String
+        var type: String
+        var amount: Int
+        var body: some View {
+            HStack {
+                VStack(alignment: .leading) {
+                    Text(name)
+                        .font(.headline)
+                    Text(type)
+                }
+                Spacer()
+                Text("$\(amount)")
+            }
+        }
+    }
+    
     var body: some View {
         NavigationView {
             List {
                 ForEach(expenses.items, id: \.id) { item in
-                    HStack {
-                        VStack(alignment: .leading) {
-                            Text(item.name)
-                                .font(.headline)
-                            Text(item.type)
-                        }
-                        Spacer()
-                        Text("$\(item.amount)")
+                    if item.amount <= 10 {
+                        itemView(name: item.name, type: item.type, amount: item.amount)
+                            .foregroundColor(Color.green)
+                    } else if item.amount <= 100 {
+                        itemView(name: item.name, type: item.type, amount: item.amount)
+                            .foregroundColor(Color.orange)
+                    } else {
+                        itemView(name: item.name, type: item.type, amount: item.amount)
+                            .foregroundColor(Color.red)
                     }
                 }
                 .onDelete(perform: removeItems)
             }
             .navigationBarTitle("iExpense")
-            .navigationBarItems(trailing:
-                                    Button(action: {
-                                        self.showingAddExpense.toggle()
-                                    }) {
-                                        Image(systemName: "plus")
-                                    }
+            .navigationBarItems(leading:
+                                        EditButton(),
+                                trailing:
+                                        Button(action: {
+                                            self.showingAddExpense.toggle()
+                                        }) {
+                                            Image(systemName: "plus")
+                                        }
             )
             .sheet(isPresented: $showingAddExpense) {
                 addView(expenses: self.expenses)

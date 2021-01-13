@@ -14,6 +14,8 @@ struct addView: View {
     @State private var type = "Personal"
     @State private var amount = ""
     
+    @State private var showingAlert = false
+    
     @ObservedObject var expenses: Expenses
     
     static let types = ["Business", "Personal"]
@@ -35,10 +37,16 @@ struct addView: View {
                                         if let actualAmount = Int(self.amount) {
                                             let item = ExpenseItem(name: self.name, type: self.type, amount: actualAmount)
                                             self.expenses.items.append(item)
+                                            self.presentationMode.wrappedValue.dismiss()
                                         }
-                                        self.presentationMode.wrappedValue.dismiss()
+                                        else {
+                                            showingAlert = true
+                                        }
                                     }
             )
+            .alert(isPresented: $showingAlert) {
+                Alert(title: Text("Oops!"), message: Text("Item amount is not a valid integer!"), dismissButton: .default(Text("Continue")))
+            }
         }
     }
 }
