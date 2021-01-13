@@ -21,26 +21,33 @@ struct ContentView: View {
     
     
     var body: some View {
-        VStack {
-            Text("What tables you want to practice: ")
-                .font(.headline)
-            Stepper(value: $tables, in: 1...12, step: 1) {
-                Text("Tables up to \(tables)")
-            }
-            .padding(.bottom, 20)
-            
-            Text("How many questions?")
-                .font(.headline)
-            Picker("Questions",selection: $questions) {
-                ForEach (0..<questionOptions.count) {
-                        Text("\(questionOptions[$0])")
+        NavigationView {
+            VStack {
+                Text("What tables you want to practice: ")
+                    .font(.headline)
+                Stepper(value: $tables, in: 1...12, step: 1) {
+                    Text("Tables up to \(tables)")
+                }
+                .padding(.bottom, 20)
+                
+                Text("How many questions?")
+                    .font(.headline)
+                Picker("Questions",selection: $questions) {
+                    ForEach (0..<questionOptions.count) {
+                            Text("\(questionOptions[$0])")
+                    }
+                }
+                .pickerStyle(SegmentedPickerStyle())
+                .padding(.bottom, 20)
+                Text("Tables: \(tables)")
+                Text("Questions: \(questions)")
+                Button("Start game") {
+                    self.gameStarted.toggle()
                 }
             }
-            .pickerStyle(SegmentedPickerStyle())
-            .padding(.bottom, 20)
-            
-            Text("Tables: \(tables)")
-            Text("Questions: \(questions)")
+            .sheet(isPresented: $gameStarted) {
+                gameView()
+            }
         }
     }
 }
