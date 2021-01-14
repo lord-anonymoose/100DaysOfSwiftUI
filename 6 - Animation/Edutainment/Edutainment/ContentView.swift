@@ -23,12 +23,14 @@ struct ContentView: View {
     var body: some View {
         NavigationView {
             VStack {
+                
                 Text("What tables you want to practice: ")
                     .font(.headline)
                 Stepper(value: $tables, in: 1...12, step: 1) {
                     Text("Tables up to \(tables)")
                 }
                 .padding(.bottom, 20)
+                .padding()
                 
                 Text("How many questions?")
                     .font(.headline)
@@ -39,14 +41,14 @@ struct ContentView: View {
                 }
                 .pickerStyle(SegmentedPickerStyle())
                 .padding(.bottom, 20)
-                Text("Tables: \(tables)")
-                Text("Questions: \(questions)")
+                .padding()
+                
                 Button("Start game") {
                     self.gameStarted.toggle()
                 }
             }
             .sheet(isPresented: $gameStarted) {
-                gameView()
+                gameView(maxTable: tables, questions: questions)
             }
         }
     }
