@@ -18,13 +18,16 @@ struct ContentView: View {
                     destination: Text("Detail View")) {
                     Image(mission.image)
                         .resizable()
-                        .aspectRatio(contentMode: .fit)
+                        .scaledToFit()
                         .frame(width: 44, height: 44)
-                    VStack {
-                        
+                    VStack(alignment: .leading) {
+                        Text(mission.displayName)
+                            .font(.headline)
+                        Text(mission.formattedLaunchDate)
                     }
                 }
             }
+            .navigationBarTitle("Moonshot")
         }
     }
 }
