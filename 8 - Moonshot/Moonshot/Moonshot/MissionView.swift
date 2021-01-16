@@ -23,7 +23,7 @@ struct MissionView: View {
                     Image(self.mission.image)
                         .resizable()
                         .scaledToFit()
-                        //.frame(maxWidth: geometry.size.width * 0.7)
+                        .frame(maxWidth: geometry.size.width * 0.7)
                         .padding(.top)
                     
                     Text(self.mission.description)
@@ -32,29 +32,32 @@ struct MissionView: View {
                     Spacer(minLength: 25)
                     
                     ForEach(self.astronauts, id: \.role) { CrewMember in
-                        HStack {
-                            Image(CrewMember.astronaut.id)
-                                .resizable()
-                                .frame(width: 83, height: 60)
-                                .clipShape(Capsule())
-                                .overlay(Capsule().stroke(Color.primary, lineWidth: 1))
-                            VStack(alignment: .leading) {
-                                Text(CrewMember.astronaut.name)
-                                    .font(.headline)
-                                Text(CrewMember.role)
-                                    .foregroundColor(.secondary)
+                        NavigationLink(
+                            destination: AstronautView(astronaut: CrewMember.astronaut)) {
+                                    HStack {
+                                        Image(CrewMember.astronaut.id)
+                                            .resizable()
+                                            .frame(width: 83, height: 60)
+                                            .clipShape(Capsule())
+                                            .overlay(Capsule().stroke(Color.primary, lineWidth: 1))
+                                        VStack(alignment: .leading) {
+                                            Text(CrewMember.astronaut.name)
+                                                .font(.headline)
+                                            Text(CrewMember.role)
+                                                .foregroundColor(.secondary)
+                                        }
+                                        
+                                        Spacer()
+                                    }
                             }
-                            
-                            Spacer()
-                        }
+                        .buttonStyle(PlainButtonStyle())
                     }
                     .padding(.horizontal)
             
                 }
             }
         }
-        //navigationBarTitle(Text(self.mission.displayName))
-        //, displayMode: .inline)
+        .navigationBarTitle(Text(self.mission.displayName), displayMode: .inline)
     }
     
     init(mission: Mission, astronauts: [Astronaut]) {
