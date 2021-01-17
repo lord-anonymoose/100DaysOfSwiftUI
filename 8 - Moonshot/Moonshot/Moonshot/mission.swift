@@ -18,6 +18,14 @@ struct Mission: Codable, Identifiable {
     let crew: [CrewRole]
     let description: String
     
+    var crewMates: [String] {
+        var array = [String]()
+        for i in 0...crew.count - 1 {
+            array.append(crew[i].name.capitalizingFirstLetter())
+        }
+        return array
+    }
+    
     var displayName: String {
         "Apollo \(id)"
     }
