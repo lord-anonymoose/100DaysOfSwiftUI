@@ -15,7 +15,8 @@ struct MissionView: View {
 
     let mission: Mission
     let astronauts: [CrewMember]
-    
+    let missions: [Mission] = Bundle.main.decode("missions.json")
+
     var body: some View {
         GeometryReader { geometry in
             ScrollView(.vertical) {
@@ -35,7 +36,7 @@ struct MissionView: View {
                     
                     ForEach(self.astronauts, id: \.role) { CrewMember in
                         NavigationLink(
-                            destination: AstronautView(astronaut: CrewMember.astronaut)) {
+                            destination: AstronautView(astronaut: CrewMember.astronaut, missions: self.missions)) {
                                     HStack {
                                         Image(CrewMember.astronaut.id)
                                             .resizable()
