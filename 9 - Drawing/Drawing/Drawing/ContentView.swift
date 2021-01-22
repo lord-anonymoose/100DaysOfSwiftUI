@@ -7,30 +7,54 @@
 
 import SwiftUI
 
+struct Arrow: Shape {
+    func path(in rect: CGRect) -> Path {
+        var triangle = Path()
+        var line = Path()
+        
+        line.move(to: CGPoint(x:rect.midX, y: rect.midY))
+        line.addLine(to: CGPoint(x: rect.midX, y: rect.maxY))
+
+        
+        triangle.move(to: CGPoint(x: rect.midX, y: rect.midY - 20))
+        triangle.addLine(to: CGPoint(x: rect.midX + 20, y: rect.midY))
+        triangle.addLine(to: CGPoint(x: rect.midX - 20, y: rect.midY))
+        triangle.addLine(to: CGPoint(x: rect.midX, y: rect.midY - 20))
+        
+        var arrow = line
+        arrow.addPath(triangle)
+        return (arrow)
+    }
+    
+}
+
+struct Line: Shape {
+    func path(in rect: CGRect) -> Path {
+        var path = Path()
+        
+        path.move(to: CGPoint(x:rect.midX, y: rect.midY))
+        path.addLine(to: CGPoint(x: rect.midX, y: rect.maxY))
+        
+        return path
+    }
+}
+
 struct Triangle: Shape {
     func path(in rect: CGRect) -> Path {
         var path = Path()
         
-        path.move(to: CGPoint(x: rect.midX, y: rect.minY))
-        path.addLine(to: CGPoint(x: rect.minX, y: rect.maxY))
-        path.addLine(to: CGPoint(x: rect.maxX, y: rect.maxY))
-        path.addLine(to: CGPoint(x: rect.midX, y: rect.minY))
-        
+        path.move(to: CGPoint(x: rect.midX - 20, y: rect.midY))
+        path.addLine(to: CGPoint(x: rect.midX, y: rect.midY - 20))
+        path.addLine(to: CGPoint(x: rect.midX + 20, y: rect.midY))
         return path
     }
 }
 
 struct ContentView: View {
     var body: some View {
-        Path { path in
-            path.move(to: CGPoint(x: 200, y: 100))
-            path.addLine(to: CGPoint(x: 100, y: 300))
-            path.addLine(to: CGPoint(x: 300, y: 300))
-            path.addLine(to: CGPoint(x: 200, y: 100))
-        }
-        //.fill(Color.green)
-        .stroke(Color.blue, style: StrokeStyle(lineWidth: 5, lineCap: .round, lineJoin: .round))
-        Triangle()
+        Arrow()
+            .stroke(Color.red, style: StrokeStyle(lineWidth: 10, lineCap: .round, lineJoin: .round))
+            
     }
 }
 
