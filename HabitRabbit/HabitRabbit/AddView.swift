@@ -8,10 +8,20 @@
 import SwiftUI
 
 struct AddView: View {
+    @State private var newHabit = Habit(name: "", comments: "", lastCheckIn: nil)
+    @State private var name: String = ""
+    
     var body: some View {
         NavigationView {
             Form {
-                Text("Hello, world!")
+                Section(header: Text("Habit name")) {
+                    TextField("Jogging", text: $newHabit.name)
+                }
+                Section(header: Text("Description")) {
+                    MultilineTextView(text: $newHabit.comments)
+                        .frame(height: 50)
+                }
+                
             }
             .navigationBarTitle("New habit")
         }
