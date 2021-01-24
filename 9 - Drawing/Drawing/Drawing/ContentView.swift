@@ -50,9 +50,9 @@ struct Triangle: Shape {
     }
 }
 
-struct ContentView: View {
-    @State private var lineWidth: CGFloat = 3
-
+struct arrowView: View {
+    @State private var lineWidth: CGFloat = 2
+    
     var animatableData: CGFloat {
         get { lineWidth }
         set { self.lineWidth = newValue }
@@ -66,6 +66,13 @@ struct ContentView: View {
                     lineWidth += 10
                 }
             }
+    }
+}
+
+struct ContentView: View {
+    
+    var body: some View {
+        Arrow()
     }
 }
 
