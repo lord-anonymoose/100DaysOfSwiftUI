@@ -23,7 +23,7 @@ struct Arrow: Shape {
         
         var arrow = line
         arrow.addPath(triangle)
-        return (arrow)
+        return arrow
     }
     
 }
@@ -51,10 +51,21 @@ struct Triangle: Shape {
 }
 
 struct ContentView: View {
+    @State private var lineWidth: CGFloat = 3
+
+    var animatableData: CGFloat {
+        get { lineWidth }
+        set { self.lineWidth = newValue }
+    }
+    
     var body: some View {
         Arrow()
-            .stroke(Color.red, style: StrokeStyle(lineWidth: 10, lineCap: .round, lineJoin: .round))
-            
+            .stroke(Color.red, style: StrokeStyle(lineWidth: lineWidth, lineCap: .round, lineJoin: .round))
+            .onTapGesture {
+                withAnimation {
+                    lineWidth += 10
+                }
+            }
     }
 }
 
