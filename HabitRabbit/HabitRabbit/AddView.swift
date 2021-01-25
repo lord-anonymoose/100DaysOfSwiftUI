@@ -5,11 +5,15 @@
 //  Created by Philipp on 24.01.2021.
 //
 
+// This view is shown when user is adding a new habit to his list
+
 import SwiftUI
 
 struct AddView: View {
-    @State private var newHabit = Habit(name: "", comments: "", lastCheckIn: nil)
+    @State private var newHabit = Habit(name: "", comments: "")
     @State private var name: String = ""
+    let userData = defaults.object(forKey: "userData") as? [Habit] ?? [Habit]()
+    @State private var allHabits = [Habit]()
     
     var body: some View {
         NavigationView {
@@ -18,12 +22,18 @@ struct AddView: View {
                     TextField("Jogging", text: $newHabit.name)
                 }
                 Section(header: Text("Description")) {
-                    MultilineTextView(text: $newHabit.comments)
-                        .frame(height: 50)
+                    TextField("Brief comments", text: $newHabit.comments)
                 }
                 
             }
             .navigationBarTitle("New habit")
+            .navigationBarItems(trailing: Button(action: {
+                allHabits = userData
+                allHabits.append(newHabit)
+                defaults.set(allHabits, forKey: "userData")
+            }) {
+                addButton
+            })
         }
     }
 }

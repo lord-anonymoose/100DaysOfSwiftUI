@@ -5,15 +5,20 @@
 //  Created by Philipp on 24.01.2021.
 //
 
+// This is the main view of the app
+
 import SwiftUI
 
+
 struct HomeView: View {
+    
     @State private var showingAddView = false
+    let userData = defaults.object(forKey: "userData") as? [Habit] ?? [Habit]()
     
     var body: some View {
         NavigationView {
-            List {
-
+            List(userData) {habit in
+                Text("\(habit.name)")
             }
                 .sheet(isPresented: $showingAddView) {
                     AddView()
