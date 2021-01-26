@@ -13,23 +13,37 @@ import SwiftUI
 struct HomeView: View {
     
     @State private var showingAddView = false
-    let userData = defaults.object(forKey: "userData") as? [Habit] ?? [Habit]()
+    @State private var userData = loadData()
+    
+    func removeRows(at offsets: IndexSet) {
+        userData.remove(atOffsets: offsets)
+        saveData(habits: userData)
+    }
     
     var body: some View {
         NavigationView {
-            List(userData) {habit in
-                Text("\(habit.name)")
-            }
-                .sheet(isPresented: $showingAddView) {
-                    AddView()
+            List {
+                ForEach(userData, id: \.id) { habit in
+                    Text(habit.name)
                 }
+                .onDelete(perform: self.removeRows)
+            }
+
+            .onChange(of: showingAddView) {_ in
+                userData = loadData()
+            }
+            
+            .sheet(isPresented: $showingAddView) {
+                AddView()
+            }
                 .navigationBarTitle("My habits")
-                .navigationBarItems(trailing:
-                                        Button(action: {
-                                            showingAddView.toggle()
-                                        }) {
-                                            addButton
-                                        }
+                .navigationBarItems(
+                    trailing:
+                        Button(action: {
+                            showingAddView.toggle()
+                        }) {
+                            addButton
+                        }
                 )
         }
     }

@@ -12,8 +12,7 @@ import SwiftUI
 struct AddView: View {
     @State private var newHabit = Habit(name: "", comments: "")
     @State private var name: String = ""
-    let userData = defaults.object(forKey: "userData") as? [Habit] ?? [Habit]()
-    @State private var allHabits = [Habit]()
+    @State private var allHabits = loadData()
     
     var body: some View {
         NavigationView {
@@ -27,13 +26,14 @@ struct AddView: View {
                 
             }
             .navigationBarTitle("New habit")
-            .navigationBarItems(trailing: Button(action: {
-                allHabits = userData
-                allHabits.append(newHabit)
-                defaults.set(allHabits, forKey: "userData")
-            }) {
-                addButton
-            })
+            .navigationBarItems(
+                trailing: Button(action: {
+                    allHabits.append(newHabit)
+                    saveData(habits: allHabits)
+                    print("Data saved")
+                }) {
+                    addButton
+                })
         }
     }
 }
