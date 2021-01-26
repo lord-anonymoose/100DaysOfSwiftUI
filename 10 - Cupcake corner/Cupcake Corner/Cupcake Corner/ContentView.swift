@@ -7,12 +7,12 @@
 
 import SwiftUI
 
-struct Responce: Codable {
+struct Response: Codable {
     var results: [Result]
 }
 
 struct Result: Codable {
-    var trackID: Int
+    var trackId: Int
     var trackName: String
     var collectionName: String
 }
@@ -39,7 +39,7 @@ struct ContentView: View {
     @State var results = [Result]()
     
     var body: some View {
-        List(results, id: \.trackID) { item in
+        List(results, id: \.trackId) { item in
             VStack(alignment: . leading) {
                 Text(item.trackName)
                     .font(.headline)
@@ -61,7 +61,7 @@ struct ContentView: View {
         URLSession.shared.dataTask(with: request) {
             data, responce, error in
             if let data = data {
-                if let decodedResponse = try? JSONDecoder().decode(Responce.self, from: data) {
+                if let decodedResponse = try? JSONDecoder().decode(Response.self, from: data) {
                     DispatchQueue.main.async {
                         self.results = decodedResponse.results
                     }
