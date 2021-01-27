@@ -11,6 +11,10 @@
 		171B38DD25C024FC00AB223A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 171B38DC25C024FC00AB223A /* ContentView.swift */; };
 		171B38DF25C0250000AB223A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 171B38DE25C0250000AB223A /* Assets.xcassets */; };
 		171B38E225C0250000AB223A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 171B38E125C0250000AB223A /* Preview Assets.xcassets */; };
+		1742DACE25C203040050C3D0 /* AddressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1742DACD25C203040050C3D0 /* AddressView.swift */; };
+		1742DAD525C203F00050C3D0 /* CheckoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1742DAD425C203F00050C3D0 /* CheckoutView.swift */; };
+		17E733FA25C1FEA000095664 /* TailorSwift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17E733F925C1FEA000095664 /* TailorSwift.swift */; };
+		17E733FD25C1FF6900095664 /* Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17E733FC25C1FF6900095664 /* Order.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,6 +24,10 @@
 		171B38DE25C0250000AB223A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		171B38E125C0250000AB223A /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		171B38E325C0250000AB223A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1742DACD25C203040050C3D0 /* AddressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressView.swift; sourceTree = "<group>"; };
+		1742DAD425C203F00050C3D0 /* CheckoutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckoutView.swift; sourceTree = "<group>"; };
+		17E733F925C1FEA000095664 /* TailorSwift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TailorSwift.swift; sourceTree = "<group>"; };
+		17E733FC25C1FF6900095664 /* Order.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Order.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +62,10 @@
 			children = (
 				171B38DA25C024FC00AB223A /* Cupcake_CornerApp.swift */,
 				171B38DC25C024FC00AB223A /* ContentView.swift */,
+				17E733FC25C1FF6900095664 /* Order.swift */,
+				1742DAD425C203F00050C3D0 /* CheckoutView.swift */,
+				1742DACD25C203040050C3D0 /* AddressView.swift */,
+				17E733F925C1FEA000095664 /* TailorSwift.swift */,
 				171B38DE25C0250000AB223A /* Assets.xcassets */,
 				171B38E325C0250000AB223A /* Info.plist */,
 				171B38E025C0250000AB223A /* Preview Content */,
@@ -140,6 +152,10 @@
 			files = (
 				171B38DD25C024FC00AB223A /* ContentView.swift in Sources */,
 				171B38DB25C024FC00AB223A /* Cupcake_CornerApp.swift in Sources */,
+				1742DAD525C203F00050C3D0 /* CheckoutView.swift in Sources */,
+				17E733FD25C1FF6900095664 /* Order.swift in Sources */,
+				17E733FA25C1FEA000095664 /* TailorSwift.swift in Sources */,
+				1742DACE25C203040050C3D0 /* AddressView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
