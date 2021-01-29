@@ -36,7 +36,7 @@ class Order: ObservableObject, Codable {
     @Published var zip = ""
 
     var hasValidAddress: Bool {
-        if name.isEmpty || streetAddress.isEmpty || city.isEmpty || zip.isEmpty {
+        if name.isEmpty || streetAddress.isEmpty || city.isEmpty || zip.isEmpty || streetAddress.trimmingCharacters(in: .whitespaces).isEmpty {
             return false
         }
 
@@ -59,6 +59,7 @@ class Order: ObservableObject, Codable {
         if addSprinkles {
             cost += Double(quantity) / 2
         }
+        
 
         return cost
     }

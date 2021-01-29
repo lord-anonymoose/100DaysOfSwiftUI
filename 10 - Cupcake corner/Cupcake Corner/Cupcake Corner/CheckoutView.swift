@@ -40,7 +40,8 @@ struct CheckoutView: View {
     
     func placeOrder() {
         guard let encoded = try? JSONEncoder().encode(order) else {
-            print("Failed to encode order")
+            self.confirmationMessage = "Failed to encode order"
+            self.showingConfirmation = true
             return
         }
         
@@ -52,7 +53,8 @@ struct CheckoutView: View {
         
         URLSession.shared.dataTask(with: request) { data, response, error in
             guard let data = data else {
-                print("No data in response: \(error?.localizedDescription ?? "Unknown error").")
+                self.confirmationMessage = "No data in response: \(error?.localizedDescription ?? "Unknown error")."
+                self.showingConfirmation = true
                 return
             }
 
@@ -60,7 +62,8 @@ struct CheckoutView: View {
                 self.confirmationMessage = "Your order for \(decodedOrder.quantity)x \(Order.types[decodedOrder.type].lowercased()) cupcakes is on its way!"
                 self.showingConfirmation = true
             } else {
-                print("Invalid response from server")
+                self.confirmationMessage = "Invalid response from server"
+                self.showingConfirmation = true
             }
         }.resume()
     }
