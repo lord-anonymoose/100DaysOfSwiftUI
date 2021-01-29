@@ -55,15 +55,14 @@ struct CheckoutView: View {
                 print("No data in response: \(error?.localizedDescription ?? "Unknown error").")
                 return
             }
-            
+
             if let decodedOrder = try? JSONDecoder().decode(Order.self, from: data) {
                 self.confirmationMessage = "Your order for \(decodedOrder.quantity)x \(Order.types[decodedOrder.type].lowercased()) cupcakes is on its way!"
-                print(confirmationMessage)
                 self.showingConfirmation = true
             } else {
                 print("Invalid response from server")
             }
-                }.resume()
+        }.resume()
     }
 }
 
