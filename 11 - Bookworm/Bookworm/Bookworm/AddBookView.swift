@@ -24,7 +24,7 @@ struct AddBookView: View {
                 Section {
                     TextField("Name of the book", text: $title)
                     TextField("Author's name", text: $author)
-                    Picker("Gemre", selection: $genre) {
+                    Picker("Genre", selection: $genre) {
                         ForEach(genres, id: \.self) {
                             Text($0)
                         }
