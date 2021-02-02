@@ -37,7 +37,7 @@ struct DetailView: View {
                 
                 Text(self.book.review ?? "No review")
                     .padding()
-                
+                Text("Read: \(self.book.date ?? "N/A")")
                 RatingView(rating: .constant(Int(self.book.rating)))
                     .font(.largeTitle)
                 
