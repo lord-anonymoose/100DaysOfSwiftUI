@@ -39,34 +39,43 @@ struct ContentView: View {
     }
     
     func loadData () {
-        results = Bundle.main.decode("friendface.json")
-    }
-
-        /*
-        guard let url = URL(string: urlString) else {
-            print("Invalid URL")
-            return
-        }
-        
-        let request = URLRequest(url: url)
-        
-        URLSession.shared.dataTask(with: request) {
-            data, responce, error in
-            if let data = data {
-                if let decodedResponse = try? JSONDecoder().decode(Response.self, from: data) {
-                    DispatchQueue.main.async {
-                        self.results = decodedResponse.results
-                    }
-                    
-                    return
-                }
+        //results = Bundle.main.decode("friendface.json")
+        do {
+            guard let url = URL(string: urlString) else {
+                print("Invalid URL")
+                return
             }
             
-            print("Fetch failed: \(error?.localizedDescription ?? "Unknown error")")
-        }.resume()
-    }
+            let request = URLRequest(url: url)
+
+            
+            let decoder = JSONDecoder()
+            decoder.dateDecodingStrategy = .iso8601
+            URLSession.shared.dataTask(with: request) {
+                data, responce, error in
+                if let data = data {
+                    do {
+                        let decoder = JSONDecoder()
+                        decoder.dateDecodingStrategy = .iso8601
+                        self.results = try decoder.decode([User].self, from: data)
+                        // your code
+                    } catch {
+                        print("Decode error:", error)
+                        return
+                    }
+                } else {
+                    print("Fetch failed: \(error?.localizedDescription ?? "Unknown error")")
+                }
+            }.resume()
+        }
+        /*
+            let users = try decoder.decode([User].self, from: data)
+        } catch {
+            print("Decode error:", error)
+            return
+        }
  */
-        
+    }
 }
 
 

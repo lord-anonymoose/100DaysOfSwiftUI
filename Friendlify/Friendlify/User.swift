@@ -12,22 +12,22 @@ struct Response: Codable {
 }
 
 struct User: Codable {
-    struct Friend: Codable {
-        var id: String
-        var name: String
-    }
-    
-    var id: String
-    var isActive: String
-    var name: String
-    var age: Int
-    var company: String
-    var email: String
-    var address: String
-    var about: String
-    var registered: String
-    var tags: [String]
-    var friends: [Friend]
+    let id: String
+    let isActive: Bool
+    let name: String
+    let age: Int
+    let company: String
+    let email: String
+    let address: String
+    let about: String
+    let registered: Date
+    let tags: [String]
+    let friends: [Friend]
+}
+
+struct Friend: Codable {
+    let id: String
+    let name: String
 }
 
 let urlString = "https://www.hackingwithswift.com/samples/friendface.json"
