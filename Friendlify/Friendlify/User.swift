@@ -18,14 +18,14 @@ struct User: Codable {
     }
     
     var id: String
-    var isActive: Bool
+    var isActive: String
     var name: String
     var age: Int
     var company: String
     var email: String
     var address: String
     var about: String
-    var regiestered: Date
+    var registered: String
     var tags: [String]
     var friends: [Friend]
 }
