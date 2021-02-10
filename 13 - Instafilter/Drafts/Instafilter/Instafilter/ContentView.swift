@@ -9,10 +9,23 @@ import SwiftUI
 import CoreImage
 import CoreImage.CIFilterBuiltins
 
+
+class ImageSaver: NSObject {
+    func writeToPhotoAlbum(image: UIImage) {
+        UIImageWriteToSavedPhotosAlbum(image, self, #selector(saveError), nil)
+    }
+
+    @objc func saveError(_ image: UIImage, didFinishSavingWithError error: Error?, contextInfo: UnsafeRawPointer) {
+        print("Save finished!")
+    }
+}
+
 struct ContentView: View {
     
     @State private var image: Image?
     @State private var showingImagePicker = false
+    @State private var inputImage: UIImage?
+    
     
     @State private var showingActionSheet = false
     @State private var backgroundColor = Color.white
@@ -35,15 +48,26 @@ struct ContentView: View {
                 self.showingImagePicker = true
             }
         }
-        .sheet(isPresented: $showingImagePicker) {
-            ImagePicker()
+        .sheet(isPresented: $showingImagePicker, onDismiss: loadImage) {
+            ImagePicker(image: self.$inputImage)
         }
         .onAppear(perform: loadImage)
     }
     
+    
+    func loadImage() {
+        guard let inputImage = inputImage else { return }
+        image = Image(uiImage: inputImage)
+        UIImageWriteToSavedPhotosAlbum(inputImage, nil, nil, nil)
+        let imageSaver = ImageSaver()
+        imageSaver.writeToPhotoAlbum(image: inputImage)
+    }
+    
+    
+    /*
     func loadImage() {
         guard let inputImage = UIImage(named: "Example") else { return }
-        
+    
         let beginImage = CIImage(image: inputImage)
         
         let context = CIContext()
@@ -62,6 +86,7 @@ struct ContentView: View {
             image = Image(uiImage: uiImage)
         }
     }
+ */
         /*
         let blur = Binding<CGFloat>(
             get: {
