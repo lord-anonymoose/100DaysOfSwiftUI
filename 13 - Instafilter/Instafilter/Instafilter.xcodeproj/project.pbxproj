@@ -12,6 +12,7 @@
 		175035E125D7C18200A359C7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 175035E025D7C18200A359C7 /* Assets.xcassets */; };
 		175035E425D7C18200A359C7 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 175035E325D7C18200A359C7 /* Preview Assets.xcassets */; };
 		175035ED25D7C35E00A359C7 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 175035EC25D7C35E00A359C7 /* ImagePicker.swift */; };
+		175035F025D9BF1200A359C7 /* ImageSaver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 175035EF25D9BF1200A359C7 /* ImageSaver.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		175035E325D7C18200A359C7 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		175035E525D7C18200A359C7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		175035EC25D7C35E00A359C7 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
+		175035EF25D9BF1200A359C7 /* ImageSaver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSaver.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +58,7 @@
 			children = (
 				175035DC25D7C18100A359C7 /* InstafilterApp.swift */,
 				175035DE25D7C18100A359C7 /* ContentView.swift */,
+				175035EF25D9BF1200A359C7 /* ImageSaver.swift */,
 				175035EC25D7C35E00A359C7 /* ImagePicker.swift */,
 				175035E025D7C18200A359C7 /* Assets.xcassets */,
 				175035E525D7C18200A359C7 /* Info.plist */,
@@ -144,6 +147,7 @@
 				175035ED25D7C35E00A359C7 /* ImagePicker.swift in Sources */,
 				175035DF25D7C18100A359C7 /* ContentView.swift in Sources */,
 				175035DD25D7C18100A359C7 /* InstafilterApp.swift in Sources */,
+				175035F025D9BF1200A359C7 /* ImageSaver.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
