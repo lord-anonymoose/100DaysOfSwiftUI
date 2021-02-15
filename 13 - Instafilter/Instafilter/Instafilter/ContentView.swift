@@ -18,6 +18,9 @@ struct ContentView: View {
     @State private var inputImage: UIImage?
     @State private var processedImage: UIImage?
     
+    @State private var filterTitle = "Choose filter"
+    @State private var showErrorMessage = false
+    
     @State var currentFilter: CIFilter = CIFilter.sepiaTone()
     
     let context = CIContext()
@@ -61,17 +64,17 @@ struct ContentView: View {
                 .padding(.vertical)
                 
                 HStack {
-                    Button("Change filter") {
+                    Button(self.filterTitle) {
                         self.showingFilterSheet = true
                     }
                     Spacer()
                     Button("Save changes") {
-                        guard let processedImage = self.processedImage else {return}
+                        guard let processedImage = self.processedImage else {showErrorMessage = true; return}
                         let imageSaver = ImageSaver()
                         imageSaver.writeToPhotoAlbum(image: processedImage)
                         
                         imageSaver.successHandler = { print("Success") }
-                        imageSaver.errorHandler = { print("\($0.localizedDescription)") }
+                        imageSaver.errorHandler = { print("\($0.localizedDescription)")}
                     }
                 }
             }
@@ -82,16 +85,19 @@ struct ContentView: View {
             }
             .actionSheet(isPresented: $showingFilterSheet) {
                 ActionSheet(title: Text("Select a filter"), buttons: [
-                    .default(Text("Crystallize")) { self.setFilter(CIFilter.crystallize()) },
-                    .default(Text("Edges")) { self.setFilter(CIFilter.edges()) },
-                    .default(Text("Gaussian Blur")) { self.setFilter(CIFilter.gaussianBlur()) },
-                    .default(Text("Pixellate")) { self.setFilter(CIFilter.pixellate()) },
-                    .default(Text("Sepia Tone")) { self.setFilter(CIFilter.sepiaTone()) },
-                    .default(Text("Unsharp Mask")) { self.setFilter(CIFilter.unsharpMask()) },
-                    .default(Text("Vignette")) { self.setFilter(CIFilter.vignette()) },
+                    .default(Text("Crystallize")) { self.setFilter(CIFilter.crystallize()); self.filterTitle = "Crystallize" },
+                    .default(Text("Edges")) { self.setFilter(CIFilter.edges()); self.filterTitle = "Edges" },
+                    .default(Text("Gaussian Blur")) { self.setFilter(CIFilter.gaussianBlur()); self.filterTitle = "Gaussian Blur" },
+                    .default(Text("Pixellate")) { self.setFilter(CIFilter.pixellate()); self.filterTitle = "Pixellate" },
+                    .default(Text("Sepia Tone")) { self.setFilter(CIFilter.sepiaTone()); self.filterTitle = "Sepia Tone" },
+                    .default(Text("Unsharp Mask")) { self.setFilter(CIFilter.unsharpMask()); self.filterTitle = "Unsharp Mask" },
+                    .default(Text("Vignette")) { self.setFilter(CIFilter.vignette()); self.filterTitle = "Vignette" },
                     .cancel()
                 ])
             }
+            .alert(isPresented: self.$showErrorMessage) {
+                                Alert(title: Text("Error"), message: Text("No image provided to save!"), dismissButton: .default(Text("OK")))
+                            }
         }
     }
     
