@@ -11,6 +11,8 @@
 		1745382425DDA312004D131B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1745382325DDA312004D131B /* ContentView.swift */; };
 		1745382625DDA315004D131B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1745382525DDA315004D131B /* Assets.xcassets */; };
 		1745382925DDA315004D131B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1745382825DDA315004D131B /* Preview Assets.xcassets */; };
+		1745383225DDAA5B004D131B /* Bundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1745383125DDAA5B004D131B /* Bundle.swift */; };
+		1745383525DDAC2B004D131B /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1745383425DDAC2B004D131B /* MapView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,6 +22,8 @@
 		1745382525DDA315004D131B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1745382825DDA315004D131B /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		1745382A25DDA315004D131B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1745383125DDAA5B004D131B /* Bundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bundle.swift; sourceTree = "<group>"; };
+		1745383425DDAC2B004D131B /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +58,8 @@
 			children = (
 				1745382125DDA312004D131B /* BucketListApp.swift */,
 				1745382325DDA312004D131B /* ContentView.swift */,
+				1745383125DDAA5B004D131B /* Bundle.swift */,
+				1745383425DDAC2B004D131B /* MapView.swift */,
 				1745382525DDA315004D131B /* Assets.xcassets */,
 				1745382A25DDA315004D131B /* Info.plist */,
 				1745382725DDA315004D131B /* Preview Content */,
@@ -139,6 +145,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				1745382425DDA312004D131B /* ContentView.swift in Sources */,
+				1745383525DDAC2B004D131B /* MapView.swift in Sources */,
+				1745383225DDAA5B004D131B /* Bundle.swift in Sources */,
 				1745382225DDA312004D131B /* BucketListApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

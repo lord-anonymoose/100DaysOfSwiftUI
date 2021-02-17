@@ -5,6 +5,7 @@
 //  Created by Philipp on 17.02.2021.
 //
 
+import LocalAuthentication
 import SwiftUI
 
 struct User: Identifiable, Comparable {
@@ -18,6 +19,27 @@ struct User: Identifiable, Comparable {
 }
 
 struct ContentView: View {
+    @State private var isUnlocked = false
+    func authenticate() {
+        let context = LAContext()
+        var error: NSError?
+        
+        if context.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &error) {
+            let reason = "We need to unlock your data."
+            context.evaluatePolicy(.deviceOwnerAuthentication, localizedReason: reason) { success, authenticationError in
+                DispatchQueue.main.async {
+                    if success {
+                        self.isUnlocked = true
+                    } else {
+                        
+                    }
+                }
+            }
+        } else {
+            // no biometrics
+        }
+    }
+    
     let users = [
         User(firstName: "Brian", lastName: "Wards"),
         User(firstName: "Robert", lastName: "Hunter"),
@@ -31,6 +53,11 @@ struct ContentView: View {
     }
     
     var body: some View {
+        if self.isUnlocked {
+            MapView()
+        } else {
+            Text("Locked")
+        }
         Text("Hello, World!")
             .onTapGesture {
                 let str = "Test Message"
@@ -45,6 +72,7 @@ struct ContentView: View {
                     print(error.localizedDescription)
                 }
             }
+            .onAppear(perform: authenticate)
     }
 }
 
